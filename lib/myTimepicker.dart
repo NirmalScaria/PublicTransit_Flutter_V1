@@ -13,7 +13,10 @@ class _TimePickerState extends State<TimePicker> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        showTimePicker(context: context, initialTime: TimeOfDay.now())
+        showTimePicker(
+                context: context,
+                initialTime: TimeOfDay.now(),
+                helpText: "At what time do you plan to depart/reach?")
             .then((time) {
           setState(() {
             _dateTime = time;
