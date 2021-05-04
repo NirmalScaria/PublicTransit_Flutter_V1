@@ -3,8 +3,6 @@ import 'package:flutter/rendering.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'myDepartorreach.dart';
 import 'myFromandto.dart';
-import 'myTimepicker.dart';
-
 class SearchBus extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -88,7 +86,22 @@ class SearchBus extends StatelessWidget {
                                   blurRadius: 6.0,
                                 )
                               ]),
-                          child: TimePicker(),
+                          child: Row(
+                            children: <Widget>[
+                              Text("SELECT TIME  ",
+                                  style: GoogleFonts.roboto(
+                                      textStyle: TextStyle(
+                                    color: Color(0XFF4B525C),
+                                    letterSpacing: .5,
+                                    fontWeight: FontWeight.w900,
+                                    fontSize: 9,
+                                  ))),
+                              Image.asset(
+                                "lib/assets/dropdownicon.png",
+                                height: 5,
+                              )
+                            ],
+                          ),
                         )
                       ])),
               Container(
@@ -115,6 +128,7 @@ class SearchBus extends StatelessWidget {
                             children: <Widget>[
                               Flexible(
                                 flex: 1,
+
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: <Widget>[
@@ -130,8 +144,7 @@ class SearchBus extends StatelessWidget {
                                         ),
                                       ),
                                     ),
-                                    Image.asset("lib/assets/searchicon.png",
-                                        height: 10)
+                                    Image.asset("lib/assets/searchicon.png", height:10)
                                   ],
                                 ),
                               )
