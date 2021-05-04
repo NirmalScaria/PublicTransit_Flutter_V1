@@ -22,7 +22,7 @@ class _TimePickerState extends State<TimePicker> {
       },
       child: Row(
         children: <Widget>[
-          Text(_dateTime == null ? "SELECT TIme" : _dateTime.format(context),
+          Text(_dateTime == null ? "SELECT TIME" : _dateTime.format(context),
               style: GoogleFonts.roboto(
                   textStyle: TextStyle(
                 color: Color(0XFF4B525C),
