@@ -14,7 +14,7 @@ class MyNavbar extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
-                "BUSES",
+                "BUSES1",
                 style: GoogleFonts.roboto(
                   textStyle: TextStyle(
                     color: Color(0XFF707070),
