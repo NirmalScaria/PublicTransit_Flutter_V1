@@ -8,6 +8,7 @@ import 'myTabList.dart';
 import 'myCatchAndBook.dart';
 import 'myBottomBar.dart';
 import 'myGeoloc.dart';
+import 'package:http/http.dart' as http;
 
 void main() {
   runApp(MyApp());
@@ -26,10 +27,17 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    _getLocation();
+    _getLocation().then((value) {
+      setState(() {
+        userLocation = value;
+      });
+    });
   }
 
   Future<Map<String, double>> _getLocation() async {
+    //var url = Uri.parse("http://65.1.230.169/api/findclosest.php");
+    //var response = await http.post(url, body: {"1": "2"});
+
     var currentLocation = <String, double>{};
     try {
       currentLocation = await location.getLocation();
