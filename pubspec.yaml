@@ -30,7 +30,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   google_fonts: ^2.0.0
   flip_card: ^0.5.0
-
+  geolocator: ^7.0.3
+  location: ^1.4.1
 dev_dependencies:
   flutter_test:
     sdk: flutter

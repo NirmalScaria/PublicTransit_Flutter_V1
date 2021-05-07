@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flip_card/flip_card.dart';
+import 'package:geolocator/geolocator.dart';
+import 'myGeoloc.dart';
 
 class Fromandto extends StatefulWidget {
   @override
   _FromandtoState createState() => _FromandtoState();
 }
 
-int fromtoto = 0;
 final fromController = TextEditingController();
 final toController = TextEditingController();
 var to = "";
@@ -31,7 +32,6 @@ class Cardcontent extends StatefulWidget {
 }
 
 class _CardcontentState extends State<Cardcontent> {
-  
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -65,12 +65,10 @@ class _CardcontentState extends State<Cardcontent> {
             AnimatedContainer(
               duration: (Duration(milliseconds: 500)),
               curve: Curves.fastOutSlowIn,
-              margin: fromtoto == 0
-                  ? EdgeInsets.fromLTRB(0, 00, 0, 0)
-                  : EdgeInsets.fromLTRB(0, 50, 0, 0),
+              margin: EdgeInsets.fromLTRB(0, 00, 0, 0),
               padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
               child: new TextField(
-                                textCapitalization: TextCapitalization.characters,
+                textCapitalization: TextCapitalization.characters,
                 controller: fromController,
                 cursorColor: Colors.black,
                 decoration: new InputDecoration(
@@ -78,7 +76,7 @@ class _CardcontentState extends State<Cardcontent> {
                     "lib/assets/Location Off.png",
                     height: 19,
                   ),
-                  labelText: fromtoto == 0 ? "From" : "To",
+                  labelText: "From",
                   border: InputBorder.none,
                   focusedBorder: InputBorder.none,
                   enabledBorder: InputBorder.none,
@@ -88,7 +86,6 @@ class _CardcontentState extends State<Cardcontent> {
               ),
             ),
             GestureDetector(
-              
               child: Container(
                 margin: const EdgeInsets.fromLTRB(0, 50, 0, 0),
                 padding: EdgeInsets.symmetric(horizontal: 6),
@@ -98,15 +95,19 @@ class _CardcontentState extends State<Cardcontent> {
                 ),
               ),
             ),
+            userLocation == null
+                ? Text("Noo")
+                : Text("Location:" +
+                    userLocation["latitude"].toString() +
+                    " " +
+                    userLocation["longitude"].toString()),
             AnimatedContainer(
               duration: (Duration(milliseconds: 500)),
               curve: Curves.fastOutSlowIn,
-              margin: fromtoto == 1
-                  ? EdgeInsets.fromLTRB(0, 00, 0, 0)
-                  : EdgeInsets.fromLTRB(0, 50, 0, 0),
+              margin: EdgeInsets.fromLTRB(0, 50, 0, 0),
               padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
               child: new TextField(
-                                textCapitalization: TextCapitalization.characters,
+                textCapitalization: TextCapitalization.characters,
                 controller: toController,
                 cursorColor: Colors.black,
                 decoration: new InputDecoration(
@@ -114,7 +115,7 @@ class _CardcontentState extends State<Cardcontent> {
                     "lib/assets/Location On.png",
                     height: 19,
                   ),
-                  labelText: fromtoto == 1 ? "From" : "To",
+                  labelText: "To",
                   border: InputBorder.none,
                   focusedBorder: InputBorder.none,
                   enabledBorder: InputBorder.none,
@@ -160,8 +161,6 @@ class _CardcontentState extends State<Cardcontent> {
     );
   }
 }
-
-
 
 class Cardold extends StatefulWidget {
   @override
@@ -202,9 +201,7 @@ class _CardoldState extends State<Cardold> {
             AnimatedContainer(
               duration: (Duration(milliseconds: 500)),
               curve: Curves.fastOutSlowIn,
-              margin: fromtoto == 0
-                  ? EdgeInsets.fromLTRB(0, 00, 0, 0)
-                  : EdgeInsets.fromLTRB(0, 50, 0, 0),
+              margin: EdgeInsets.fromLTRB(0, 00, 0, 0),
               padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
               child: new TextField(
                 textCapitalization: TextCapitalization.characters,
@@ -215,7 +212,7 @@ class _CardoldState extends State<Cardold> {
                     "lib/assets/Location Off.png",
                     height: 19,
                   ),
-                  labelText: fromtoto == 0 ? "From" : "To",
+                  labelText: "From",
                   border: InputBorder.none,
                   focusedBorder: InputBorder.none,
                   enabledBorder: InputBorder.none,
@@ -225,7 +222,6 @@ class _CardoldState extends State<Cardold> {
               ),
             ),
             GestureDetector(
-              
               child: Container(
                 margin: const EdgeInsets.fromLTRB(0, 50, 0, 0),
                 padding: EdgeInsets.symmetric(horizontal: 6),
@@ -238,9 +234,7 @@ class _CardoldState extends State<Cardold> {
             AnimatedContainer(
               duration: (Duration(milliseconds: 500)),
               curve: Curves.fastOutSlowIn,
-              margin: fromtoto == 1
-                  ? EdgeInsets.fromLTRB(0, 00, 0, 0)
-                  : EdgeInsets.fromLTRB(0, 50, 0, 0),
+              margin: EdgeInsets.fromLTRB(0, 50, 0, 0),
               padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
               child: new TextField(
                 textCapitalization: TextCapitalization.characters,
@@ -251,7 +245,7 @@ class _CardoldState extends State<Cardold> {
                     "lib/assets/Location On.png",
                     height: 19,
                   ),
-                  labelText: fromtoto == 1 ? "From" : "To",
+                  labelText: "To",
                   border: InputBorder.none,
                   focusedBorder: InputBorder.none,
                   enabledBorder: InputBorder.none,
@@ -297,4 +291,3 @@ class _CardoldState extends State<Cardold> {
     );
   }
 }
-
