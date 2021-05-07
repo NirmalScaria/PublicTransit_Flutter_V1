@@ -30,14 +30,16 @@ class _MyAppState extends State<MyApp> {
     _getLocation().then((value) {
       setState(() {
         userLocation = value;
+        _getResponse().then((value) {
+          setState(() {
+            resptext = value;
+          });
+        });
       });
     });
   }
 
   Future<Map<String, double>> _getLocation() async {
-    //var url = Uri.parse("http://65.1.230.169/api/findclosest.php");
-    //var response = await http.post(url, body: {"1": "2"});
-
     var currentLocation = <String, double>{};
     try {
       currentLocation = await location.getLocation();
@@ -45,6 +47,19 @@ class _MyAppState extends State<MyApp> {
       currentLocation = null;
     }
     return currentLocation;
+  }
+
+  Future<String> _getResponse() async {
+    var url = Uri.parse("http://65.1.230.169/api/findclosest.php");
+    var response = await http.post(url, body: {
+      "gx": userLocation["latitude"].toString(),
+      "gy": userLocation["longitude"].toString()
+    });
+    resptext = response.body;
+    return (resptext);
+    //HERE IS THE REMAINING
+    // Make this resptext variable a list. Get all the suggestions. Use it where it is needed.
+    //Change the server side code to give list instead of one value.
   }
 
   Widget build(BuildContext context) {

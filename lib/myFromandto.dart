@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:geolocator/geolocator.dart';
 import 'myGeoloc.dart';
+import 'package:http/http.dart' as http;
 
 class Fromandto extends StatefulWidget {
   @override
@@ -100,7 +101,8 @@ class _CardcontentState extends State<Cardcontent> {
                 : Text("Location:" +
                     userLocation["latitude"].toString() +
                     " " +
-                    userLocation["longitude"].toString()),
+                    userLocation["longitude"].toString() +
+                    resptext),
             AnimatedContainer(
               duration: (Duration(milliseconds: 500)),
               curve: Curves.fastOutSlowIn,
@@ -289,5 +291,17 @@ class _CardoldState extends State<Cardold> {
         ),
       ),
     );
+  }
+}
+
+class myResprint extends StatefulWidget {
+  @override
+  _myResprintState createState() => _myResprintState();
+}
+
+class _myResprintState extends State<myResprint> {
+  @override
+  Widget build(BuildContext context) {
+    return Text("hi");
   }
 }
